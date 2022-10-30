@@ -56,7 +56,7 @@ public class MovieController {
 
     // 4. Get Movie by movie name
   //   https://localhost:8080/get-movie-by-name?name="ppp"
-    @GetMapping("/get-movie-by-name")
+    @GetMapping("/get-movie-by-name/{name}")
     public ResponseEntity<Movie> getMovieByName(@PathVariable("name") String name){
         return new ResponseEntity<>(movieService.getMovieByName(name), HttpStatus.FOUND);
     }
