@@ -9,27 +9,25 @@ import java.util.List;
 @Component
 public class MovieRepository {
 
-    HashMap<String,Movie> movies = new HashMap<>();
+    HashMap<String, Movie> movies = new HashMap<>();
 
-    HashMap<String,Director> directors = new HashMap<>();
+    HashMap<String, Director> directors = new HashMap<>();
 
-    HashMap<String,List<String>> mdpair = new HashMap<>();
+    HashMap<String, List<String>> mdpair = new HashMap<>();
 
-    void addMovie(Movie movie){
-        movies.put(movie.getName(),movie);
-    }
-    void addDirector(Director director)
-    {
-        directors.put(director.getName(),director);
+    void addMovie(Movie movie) {
+        movies.put(movie.getName(), movie);
     }
 
-    void mapMovieDirect(String movie,String direct)
-    {
-        List<String> movielist ;
-        if(mdpair.containsKey(direct)) {
+    void addDirector(Director director) {
+        directors.put(director.getName(), director);
+    }
+
+    void mapMovieDirect(String movie, String direct) {
+        List<String> movielist;
+        if (mdpair.containsKey(direct)) {
             movielist = mdpair.get(direct);
-        }
-        else{
+        } else {
             movielist = new ArrayList<>();
         }
         movielist.add(movie);
@@ -44,6 +42,7 @@ public class MovieRepository {
             return null;
         }
     }
+
     public Director getDirector(String name) {
         try {
             Director newd = directors.get(name);
@@ -52,13 +51,14 @@ public class MovieRepository {
             return null;
         }
     }
-    List<Movie> getAllMovies(){
-        List<Movie> movieList = new ArrayList<>();
 
-        for(Movie movie:movies.values()){
-            movieList.add(movie);
+    public List<String> getAllMovies () {
+        List<String> list = new ArrayList<>();
+        for (String movie : movies.keySet()) {
+            list.add(movie);
+
         }
-        return movieList;
+        return list;
     }
 
     public void deleteDirector(String directorName) {
